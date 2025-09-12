@@ -22,6 +22,8 @@ Results are displayed with interactive **Plotly** charts.
 When running the app, you’ll see a control panel in the sidebar where you can tweak the parameters.  
 Each simulation generates a trajectory of a random walk.
 
+DEMO: https://coin-toss.streamlit.app/
+
 *(replace with your own screenshot)*
 
 ---
