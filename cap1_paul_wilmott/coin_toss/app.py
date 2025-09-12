@@ -1,10 +1,4 @@
 # app.py
-import streamlit as st
-import numpy as np
-import plotly.graph_objects as go
-import random as rd
-from coin_toss import coin, geometric_random_walk, arithmetric_random_walk
-
 """
 app.py
 -------
@@ -23,6 +17,13 @@ Dependencies:
     - plotly
     - coin_toss (custom module with random walk functions)
 """
+import streamlit as st
+import numpy as np
+import plotly.graph_objects as go
+import random as rd
+from coin_toss import coin, geometric_random_walk, arithmetric_random_walk
+
+
 
 # --- Interface Streamlit ---
 st.title("Random Walk Simulator 🎲")
