@@ -24,7 +24,7 @@ with st.sidebar.form("params_form"):
     submit = st.form_submit_button("Calculate")
 
 if submit:
-    # --- Simulação ---
+    # --- Simulation ---
     fig = go.Figure()
 
     if freq_contribuitions == "Yearly":
@@ -65,10 +65,9 @@ if submit:
         opacity=0.7
     ))
 
-
     fig.update_layout(
         title=f"Final Portfolio Value: {y[-1]:.2f}$",
-        xaxis_title="Steps",
+        xaxis_title="Year",
         yaxis_title="Value",
         legend_title="Trajectory"
     )
