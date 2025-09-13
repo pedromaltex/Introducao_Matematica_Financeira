@@ -1,16 +1,31 @@
-
 def compounded_f_value(i_v, annual_r, t):
+    """
+    Calculates the future value of a lump-sum investment
+    with annual compounding.
+    
+    Parameters:
+        i_v (float): Initial investment (present value).
+        annual_r (float): Annual interest rate (decimal).
+        t (int): Number of years.
+    
+    Returns:
+        float: Future value of the investment.
+    """
     f = i_v * (1 + annual_r) ** (t)
     return f
 
 def compounded_periodic_fvalue(payment, annual_r, m, t):
     """
-    Calcula o valor futuro de aportes recorrentes (anuidade).
+    Calculates the future value of recurring contributions (annuity).
     
-    payment: aporte periódico
-    r: taxa de juros por período
-    m: número de capitalizações por ano
-    t: número de anos
+    Parameters:
+        payment (float): Contribution made each period.
+        annual_r (float): Annual interest rate (decimal).
+        m (int): Number of compounding/contribution periods per year.
+        t (int): Number of years.
+    
+    Returns:
+        float: Future value of the recurring contributions.
     """
     r = annual_r/m
     n = m * t # número total de períodos
