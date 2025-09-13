@@ -15,7 +15,7 @@ A web-based financial calculator built with **Streamlit** that allows users to s
 
 ## 📷 Demo
 
-![App Screenshot](path/to/screenshot.png)  
+![App Screenshot](cap1_paul_wilmott/compound_interest/screenshots/demo.png)  
 *Replace this with an actual screenshot or GIF showing the app in action.*
 
 ---
