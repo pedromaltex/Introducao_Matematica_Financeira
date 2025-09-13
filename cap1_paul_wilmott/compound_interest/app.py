@@ -5,38 +5,27 @@ import random as rd
 from compound_interest import compounded_f_value, compounded_periodic_fvalue
 
 # --- Interface Streamlit ---
-st.title("Compound Interest Calculator")
+st.title("Compound Interest Calculator 💲")
 
 
 # Inputs
 with st.sidebar.form("params_form"):
 
     st.header("Simulation Parameters")
-    i_value = st.number_input("Initial Value")
+    i_value = st.number_input("Initial Value $", 0, value=10000)
 
-    contribuitions = st.number_input("Contribuitions")
+    contribuitions = st.number_input("Contribuitions $", 0, value=100)
     freq_contribuitions = st.radio("Frequency of Contributions:",
                                             ["Yearly", "Monthly", "Weekly"])
 
-    r = st.number_input("Interest Rate %")
-    freq_r = st.radio("Frequency of Interest Rate:",
-                            ["Yearly", "Monthly", "Weekly"])
+    anual_r = st.number_input("Anual Interest Rate %", min_value=0, value=7) / 100
 
-    n_years = st.slider("Nº of Years", 1, 40, 1)
+    n_years = st.slider("Nº of Years", 1, 100, 20)
     submit = st.form_submit_button("Calculate")
 
 if submit:
     # --- Simulação ---
     fig = go.Figure()
-
-    if freq_r == "Yearly":
-        print(freq_r)
-        anual_r = r / 100
-    elif freq_r == "Monthly":
-        anual_r = r*12 / 100
-    else:
-        anual_r = r*52 / 100
-
 
     if freq_contribuitions == "Yearly":
         m_contribuitions = 1 # Number of Years in a Year
@@ -78,7 +67,7 @@ if submit:
 
 
     fig.update_layout(
-        title=f"Final Portfolio Value: {y[-1]:.2f}",
+        title=f"Final Portfolio Value: {y[-1]:.2f}$",
         xaxis_title="Steps",
         yaxis_title="Value",
         legend_title="Trajectory"
