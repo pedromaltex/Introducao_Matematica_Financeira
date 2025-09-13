@@ -2,3 +2,22 @@
 /venv
 /_pycache_
 ._pycache_
+/screenshots
+.venv
+/venv
+venv/
+/_pycache_
+._pycache_
+_pycache_/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Virtual environment
+.venv/
+env/
+
+# PNG
+*.png
+screenshots/

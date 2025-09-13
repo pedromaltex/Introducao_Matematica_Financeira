@@ -16,7 +16,6 @@ A web-based financial calculator built with **Streamlit** that allows users to s
 ## 📷 Demo
 
 ![App Screenshot](screenshots/demo.png)  
-*Replace this with an actual screenshot or GIF showing the app in action.*
 
 ---
 
