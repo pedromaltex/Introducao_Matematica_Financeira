@@ -29,11 +29,11 @@ with st.sidebar.form("params_form"):
 fig = go.Figure()
 
 if freq_r == "Yearly":
-    r = r
+    r = r/100
 elif freq_r == "Monthly":
-    r /= 12
+    r /= 12 *100
 else:
-    r /= 52
+    r /= 52 *100
 
 
 if freq_contribuitions == "Yearly":
@@ -45,7 +45,6 @@ else:
 
 x_years = np.arange(1, n_years+1, 1)
 y = np.zeros(len(x_years))
-print(y)
 
 if contribuitions == 0:
     for year in x_years:
