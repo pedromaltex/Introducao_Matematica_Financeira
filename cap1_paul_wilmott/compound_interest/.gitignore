@@ -18,6 +18,3 @@ __pycache__/
 .venv/
 env/
 
-# PNG
-*.png
-screenshots/
