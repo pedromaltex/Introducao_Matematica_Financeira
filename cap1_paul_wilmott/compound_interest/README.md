@@ -1,4 +1,4 @@
-# Compound Interest Calculator
+# Compound Interest Calculator💲
 
 A web-based financial calculator built with **Streamlit** that allows users to simulate the growth of investments over time using **compound interest**. It supports both **lump-sum investments** and **recurring contributions** with customizable frequencies.
 
