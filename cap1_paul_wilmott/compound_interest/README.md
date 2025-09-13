@@ -1,112 +1,124 @@
-# 🎲 Random Walk Simulator
+# Compound Interest Calculator
 
-An interactive **Streamlit** app to simulate and visualize random walks.  
-The user can choose between:
-
-- **Geometric Random Walk** → multiplicative growth/decay (+1% or -1% each step)  
-- **Arithmetic Random Walk** → additive growth/decay (+1 or -1 each step)  
-
-The app lets you define:
-
-- Initial value  
-- Probability of an upward move  
-- Number of steps  
-- Number of simulations  
-
-Results are displayed with interactive **Plotly** charts.
+A web-based financial calculator built with **Streamlit** that allows users to simulate the growth of investments over time using **compound interest**. It supports both **lump-sum investments** and **recurring contributions** with customizable frequencies.
 
 ---
 
-## 🚀 Demo
+## 🚀 Features
 
-When running the app, you’ll see a control panel in the sidebar where you can tweak the parameters.  
-Each simulation generates a trajectory of a random walk.
-
-DEMO: https://coin-toss.streamlit.app/
-
-*(replace with your own screenshot)*
+- Calculate **future value** of a lump-sum investment.
+- Calculate **future value** of recurring contributions (monthly, yearly, weekly).
+- Interactive **line or bar charts** to visualize portfolio growth.
+- Easy-to-use **sidebar inputs** to adjust all parameters.
 
 ---
 
-## 📦 Installation
+## 📷 Demo
 
-Clone this repository and install dependencies:
+![App Screenshot](path/to/screenshot.png)  
+*Replace this with an actual screenshot or GIF showing the app in action.*
+
+---
+
+## ⚙️ How to Run
+
+1. Clone the repo:
 
 ```bash
 git clone https://github.com/pedromaltex/Introducao_Matematica_Financeira.git
-cd Introducao_Matematica_Financeira
+cd Introducao_Matematica_Financeira/cap1_paul_wilmott/compound_interest
+```
 
-# Create a virtual environment
-python3 -m venv venv
+2. Create a virtual environment (optional but recommended):
+```bash
+python -m venv venv
+source venv/bin/activate   # macOS/Linux
+venv\Scripts\activate      # Windows
+```
 
-# Activate the virtual environment
-# Linux/macOS
-source venv/bin/activate
-# Windows (Command Prompt)
-venv\Scripts\activate
-
-# Go to the app folder
-cd cap1_paul_wilmott/coin_toss
-
-# Install dependencies
+3. Install the required dependencies:
+```bash
 pip install -r requirements.txt
 ```
 
-## Requirements
+## Usage
 
-Python 3.9+
-
-Streamlit
-
-NumPy
-
-Plotly
-
-## ▶️ Usage
-
-Run the Streamlit app locally:
-
+Run the Streamlit app:
 ```bash
 streamlit run app.py
 ```
 
+Then, in the sidebar:
 
-This will open a browser window at http://localhost:8501
-.
+1. Input the initial investment.
 
-## 📂 Project Structure
-```bash
-coin_toss/
-│
-├── app.py                # Main Streamlit app
-├── coin_toss.py          # Random walk logic (coin, geometric, arithmetic)
-├── requirements.txt      # Python dependencies
-├── README.md             # Project documentation
-└── screenshot.png        # Demo screenshot (optional)
-```
+2. Specify the contribution amount (if any).
 
-## 📖 Background
+3. Choose the frequency of contributions.
 
-Random walks are widely used to model:
+4. Input the interest rate and select its frequency.
 
-- Stock prices and financial markets
+5. Select the number of years for the simulation.
 
-- Particle motion in physics
+6. Click Calculate to view the growth chart.
 
-- Population growth in biology
+## 📚 Functions
 
-This app is a simple educational tool to experiment with such stochastic processes.
+### `compounded_f_value(i_v, annual_r, t)`
 
-## 🛠️ Future Improvements
+Calculates the **future value of a single lump-sum investment**.
 
-- Add histograms of final values (distribution view)
+**Parameters:**
 
-- Display statistics (mean, variance, min, max)
- 
-- Option to export results as CSV
- 
-- Add Monte Carlo comparison
+- `i_v` (float): Initial investment (present value)  
+- `annual_r` (float): Annual interest rate in decimal (e.g., 0.05 for 5%)  
+- `t` (int): Number of years  
 
-## 📜 License
+**Returns:**  
+- `float` → Future value of the investment
+
+---
+
+### `compounded_periodic_fvalue(payment, annual_r, m, t)`
+
+Calculates the **future value of recurring contributions** (annuity).
+
+**Parameters:**
+
+- `payment` (float): Contribution made each period  
+- `annual_r` (float): Annual interest rate in decimal  
+- `m` (int): Number of compounding/contribution periods per year  
+- `t` (int): Number of years  
+
+**Returns:**  
+- `float` → Future value of the recurring contributions
+
+
+## 🎨 Visualization
+
+- Uses Plotly to display interactive charts.
+
+- Users can switch between line and bar graphs to visualize growth trajectories.
+
+## 🧮 Example
+
+- Initial investment: $2000
+
+- Monthly contribution: $500
+
+- Annual interest rate: 7%
+
+- Time horizon: 20 years
+
+The app will show the accumulated portfolio value over time in an interactive chart.
+
+## 📄 License
 
 This project is licensed under the MIT License.
+Feel free to use and modify it for personal or educational purposes.
+
+## 🙏 Acknowledgements
+
+- Built with [Streamlit](https://streamlit.io/) and [Plotly](https://plotly.com/python/).
+
+- Inspired by common financial calculators for teaching compound interest concepts.
