@@ -1,10 +1,5 @@
 .venv
 /venv
-/_pycache_
-._pycache_
-/screenshots
-.venv
-/venv
 venv/
 /_pycache_
 ._pycache_
