@@ -24,8 +24,6 @@ Each simulation generates a trajectory of a random walk.
 
 DEMO: https://coin-toss.streamlit.app/
 
-*(replace with your own screenshot)*
-
 ---
 
 ## 📦 Installation
