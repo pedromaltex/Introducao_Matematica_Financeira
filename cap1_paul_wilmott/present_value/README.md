@@ -19,8 +19,8 @@ Welcome to the **Future Value of $1 Simulation**, a simple and interactive **Str
 1. Clone this repository:
 
 ```bash
-git clone https://github.com/your-username/future-value-simulation.git
-cd future-value-simulation
+git clone https://github.com/pedromaltex/Introducao_Matematica_Financeira.git
+cd cap1_paul_wilmott/present_value
 ```
 
 2. (Optional) Create a virtual environment:
