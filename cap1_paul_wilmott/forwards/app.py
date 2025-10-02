@@ -24,7 +24,7 @@ with st.sidebar.form("params_form"):
         value=5.0, 
         format="%.2f"
     )
-    monthly_r = annual_r / 100 / 12   # convertendo de % para decimal
+    monthly_r = annual_r / 100 / 12   # % → decimal
 
     F_market = st.number_input(
         "Forward Price (Market) [F]", 
@@ -46,13 +46,24 @@ if submit:
     F_theoretical = y_forward[-1]
 
     # --- Verificação de arbitragem ---
-    arbitrage_msg = ""
-    if np.isclose(F_market, F_theoretical, atol=1e-2):
-        arbitrage_msg = "✅ No Arbitrage (preço justo) (Approximation)"
+    tolerance = 0.01 * F_theoretical  # tolerância de 1% do valor teórico
+    if abs(F_market - F_theoretical) <= tolerance:
+        arbitrage_msg = "✅ No Arbitrage (fair price within tolerance)"
+        strategy = "Do nothing"
     elif F_market > F_theoretical:
         arbitrage_msg = "📈 Arbitrage Opportunity: SELL Forward"
+        strategy = (
+            "- Short the forward contract\n"
+            "- Buy the asset in the spot market\n"
+            "- Finance purchase at risk-free rate"
+        )
     else:
         arbitrage_msg = "📉 Arbitrage Opportunity: BUY Forward"
+        strategy = (
+            "- Long the forward contract\n"
+            "- Short the asset in the spot market\n"
+            "- Invest proceeds at risk-free rate"
+        )
 
     # --- Gráfico ---
     fig = go.Figure()
@@ -61,7 +72,7 @@ if submit:
         y=y_forward, 
         mode='lines', 
         name="Forward (No Arbitrage)"    
-        ))
+    ))
 
     fig.add_trace(go.Scatter(
         x=[n_months], 
@@ -71,9 +82,21 @@ if submit:
         name="Forward (Market)"
     ))
 
+    fig.add_trace(go.Scatter(
+        x=[n_months], 
+        y=[F_theoretical], 
+        mode='markers', 
+        marker=dict(size=12, color="blue"), 
+        name="Forward (Theoretical)"
+    ))
+
     st.plotly_chart(fig)
 
     # --- Métricas ---
     st.metric("Theoretical Forward Price", f"${F_theoretical:.2f}")
     st.metric("Market Forward Price", f"${F_market:.2f}")
     st.success(arbitrage_msg)
+
+    # --- Estratégia detalhada ---
+    if strategy != "Do nothing":
+        st.info(f"**Suggested Arbitrage Strategy:**\n{strategy}")
