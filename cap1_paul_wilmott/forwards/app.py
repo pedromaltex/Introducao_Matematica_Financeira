@@ -28,9 +28,9 @@ with st.sidebar.form("params_form"):
 
     F_market = st.number_input(
         "Forward Price (Market) [F]", 
-        min_value=0.0, 
-        step=0.1, 
-        value=105.0, 
+        min_value=0.00, 
+        step=0.10, 
+        value=105.00, 
         format="%.2f"
     )
 
@@ -43,10 +43,11 @@ if submit:
     y_forward = [no_arbitrage_forward(spot_0, monthly_r, t) for t in x_months]
 
     # --- Forward teórico no vencimento ---
-    F_theoretical = y_forward[-1]
+    F_theoretical = round(y_forward[-1], 2)
 
     # --- Verificação de arbitragem ---
-    tolerance = 0.01 * F_theoretical  # tolerância de 1% do valor teórico
+    tolerance = 0.000001 * F_theoretical  
+
     if abs(F_market - F_theoretical) <= tolerance:
         arbitrage_msg = "✅ No Arbitrage (fair price within tolerance)"
         strategy = "Do nothing"
