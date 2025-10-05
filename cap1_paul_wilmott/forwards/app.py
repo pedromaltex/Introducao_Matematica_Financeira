@@ -108,9 +108,9 @@ if submit:
         f" - Market Forward Price ${F_market:.2f}"
     )
 
-if strategy != "Do nothing":
-    success_message = f"{arbitrage_msg}\n" + f"\n**Suggested Arbitrage Strategy:**\n{strategy}"
-    st.success(success_message)
-else:
-    st.success(f"{arbitrage_msg}\n")
+    if strategy != "Do nothing":
+        success_message = f"{arbitrage_msg}\n" + f"\n**Suggested Arbitrage Strategy:**\n{strategy}"
+        st.success(success_message)
+    else:
+        st.success(f"{arbitrage_msg}\n")
 
