@@ -22,7 +22,7 @@ with st.sidebar.form("params_form"):
     st.header("Parameters")    
 
     strike_price = st.number_input(
-        label="Strike Price $ [S(0)]", 
+        label="Strike Price $", 
         step=0.1, 
         format="%.2f", 
         value=100.0
