@@ -5,11 +5,17 @@ from forward_aux import no_arbitrage_forward
 
 # --- Interface Streamlit ---
 st.title("Forwards - Arbitrage or No Arbitrage??")
+
 st.info(
-            "- Guess the forward's contract true value\n"
-            "- F - S(0)*e^(-r(T-t)) = 0\n"
-            "- Is there an arbitrage opportunity?"
-        )
+    """
+    **Instructions**
+
+    - Guess the forward contract's fair value  
+    - The no-arbitrage condition is given by: $$ F = S(0) \, e^{r(T - t)} $$
+
+    - Decide whether there is an **arbitrage opportunity**
+    """
+)
 
 # Inputs
 with st.sidebar.form("params_form"):
