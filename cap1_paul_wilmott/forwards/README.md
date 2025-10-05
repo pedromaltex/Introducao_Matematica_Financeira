@@ -1,87 +1,93 @@
-# Future Value of $1 Simulation
+# Forwards - Arbitrage or No Arbitrage? 📈
 
-Welcome to the **Future Value of $1 Simulation**, a simple and interactive **Streamlit** app to visualize how money loses value over time under continuous compounding depreciation (inflation or negative interest).
-
----
-
-## ✨ Features
-
-* Input your **initial value** (default: $1)
-* Set **annual interest rate** (default: 3%)
-* Select **number of years** (1–100)
-* Visualize results as a **line chart** and **bar chart**
-* See the **final value** after the selected period
+Welcome to the Forwards app! 🎉 This Streamlit tool helps you explore forward contracts, compare market prices with fair theoretical values, and see if there’s any arbitrage opportunity. Perfect for finance enthusiasts or students wanting a hands-on way to visualize forward pricing. 💡
 
 ---
 
-## ⚡ Installation
+## What You Can Do 🛠️
 
-1. Clone this repository:
+* Calculate the **theoretical forward price** using the no-arbitrage rule:
+
+  $$
+  F = S(0) , e^{r(T-t)}
+  $$
+
+* Compare it with the **market forward price** 💰.
+
+* Instantly detect if there’s an **arbitrage opportunity** ⚡.
+
+* See **suggested strategies** if arbitrage exists 📋.
+
+* Explore an **interactive chart** showing the forward curve and market vs theoretical prices 📊.
+
+---
+
+## Getting Started 🚀
+
+### 1. Clone the Repo 📝
 
 ```bash
 git clone https://github.com/pedromaltex/Introducao_Matematica_Financeira.git
-cd cap1_paul_wilmott/present_value
 ```
 
-2. (Optional) Create a virtual environment:
+### 2. Set Up a Virtual Environment (Optional but Recommended) 🖥️
 
 ```bash
 python -m venv venv
-source venv/bin/activate  # Linux/Mac
+source venv/bin/activate  # Linux/macOS
 venv\Scripts\activate     # Windows
 ```
 
-3. Install dependencies:
+### 3. Install Dependencies 📦
 
 ```bash
+cd cap1_paul_wilmott/forwards
 pip install -r requirements.txt
 ```
 
-> Make sure `requirements.txt` includes `streamlit`, `numpy`, and `plotly`.
-
----
-
-## 🚀 Usage
-
-Run the app:
+### 4. Run the App ▶️
 
 ```bash
 streamlit run app.py
 ```
 
-1. Open the **sidebar** to set simulation parameters.
-2. Click **Calculate**.
-3. Explore how the value of money changes over time.
+Just fill in the Spot Price, Interest Rate, Market Forward Price, and Maturity, then hit **Calculate**! ✅
 
 ---
 
-## 🔍 Example
+## 📷 Demo
 
-* Initial Value: $1
-* Annual Interest Rate: 3%
-* Number of Years: 20
-
-The app will display how $1 depreciates year by year, showing both charts and the final value.
+![App Screenshot](screenshots/demo.png)  
 
 ---
 
-## 💻 Code Snippet
+## Tech Stack 🧰
 
-```python
-import numpy as np
+* [Streamlit](https://streamlit.io/) for the interface 🖥️
+* [Plotly](https://plotly.com/python/) for interactive charts 📊
+* [NumPy](https://numpy.org/) for computations ⚙️
 
-def decreasing_continuously_compounded(P, r, t):
-    return P * np.exp(-r * t)
+---
+
+## Folder Structure 📁
+
+```
+forwards-arbitrage-app/
+├─ app.py              # Main Streamlit app
+├─ forward_aux.py      # Helper functions for calculations
+├─ requirements.txt    # Dependencies
+├─ README.md           # This file
+└─ screenshots/        # Optional screenshots
 ```
 
 ---
 
-## 📄 License
+## License 📝
 
-This project is licensed under the **MIT License**.
+MIT License – feel free to use and play around with it! 🎉
 
 ---
 
-## 👤 Author
+## Author 👨‍💻
 
-**Pedro Maltez** – [GitHub Profile](https://github.com/pedromaltex)
+Pedro Maltez – finance and coding enthusiast. Enjoy experimenting with forward contracts! 💡
