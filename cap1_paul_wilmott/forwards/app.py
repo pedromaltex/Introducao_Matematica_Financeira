@@ -11,7 +11,6 @@ st.info(
             "- Is there an arbitrage opportunity?"
         )
 
-
 # Inputs
 with st.sidebar.form("params_form"):
     st.header("Parameters")    
@@ -78,7 +77,7 @@ if submit:
         x=x_months, 
         y=y_forward, 
         mode='lines', 
-        name="Forward (No Arbitrage)"    
+        name="Forward (No Arbitrage)",
     ))
 
     fig.add_trace(go.Scatter(
@@ -100,10 +99,14 @@ if submit:
     st.plotly_chart(fig)
 
     # --- Métricas ---
-    st.metric("Theoretical Forward Price", f"${F_theoretical:.2f}")
-    st.metric("Market Forward Price", f"${F_market:.2f}")
-    st.success(arbitrage_msg)
+    st.info(
+        f"- Theoretical Forward Price ${F_theoretical:.2f}\n"
+        f" - Market Forward Price ${F_market:.2f}"
+    )
 
-    # --- Estratégia detalhada ---
-    if strategy != "Do nothing":
-        st.info(f"**Suggested Arbitrage Strategy:**\n{strategy}")
+if strategy != "Do nothing":
+    success_message = f"{arbitrage_msg}\n" + f"\n**Suggested Arbitrage Strategy:**\n{strategy}"
+    st.success(success_message)
+else:
+    st.success(f"{arbitrage_msg}\n")
+
