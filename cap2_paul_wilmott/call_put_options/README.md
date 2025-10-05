@@ -20,8 +20,7 @@ A friendly and interactive Streamlit app to visualize **call and put option payo
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/call-put-payoff-app.git
-cd call-put-payoff-app
+git clone https://github.com/pedromaltex/Introducao_Matematica_Financeira.git
 ```
 
 2. (Optional) Create a virtual environment:
@@ -30,6 +29,8 @@ cd call-put-payoff-app
 python -m venv venv
 source venv/bin/activate  # Linux/macOS
 venv\Scripts\activate     # Windows
+cd cap2_paul_wilmott\call_put_options
+
 ```
 
 3. Install dependencies:
