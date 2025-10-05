@@ -95,8 +95,12 @@ if submit:
         marker=dict(size=12, color="blue"), 
         name="Forward (Theoretical)"
     ))
+    # --- Layout “full” ---
+    fig.update_layout(
+        margin=dict(l=0, r=0, t=0, b=0),  # remove margens
+    )
 
-    st.plotly_chart(fig)
+    st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": False})
 
     # --- Métricas ---
     st.info(
