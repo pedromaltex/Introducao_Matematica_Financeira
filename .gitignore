@@ -12,3 +12,7 @@ __pycache__/
 # Virtual environment
 .venv/
 env/
+
+.devcontainer
+.devcontainer/
+devcontainer/
