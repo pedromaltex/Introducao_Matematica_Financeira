@@ -4,7 +4,10 @@ import plotly.graph_objects as go
 from forward_aux import no_arbitrage_forward
 
 # --- Interface Streamlit ---
-st.title("Forwards - Arbitrage or No Arbitrage??")
+st.set_page_config(page_title="Forward Pricing", page_icon="📈")
+st.title("Forwards📈")
+st.markdown("### Arbitrage or No Arbitrage?")
+
 
 st.info(
     """
