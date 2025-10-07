@@ -54,15 +54,15 @@ with st.sidebar.form("params_form"):
     col1, col2= st.columns(2)
 
     with col1:
-        add_option = st.form_submit_button("➕ Add", use_container_width=True, type="secondary")
+        add_option = st.form_submit_button("➕ Add Option", use_container_width=True, type="secondary")
     with col2:
-        submit = st.form_submit_button("📊 Calculate", use_container_width=True, type="primary")
+        submit = st.form_submit_button("📊 Calculate Payoff", use_container_width=True, type="primary")
     
     col1, col2 = st.columns(2)
     with col1:
-        clear_button = st.form_submit_button("♻️ Clear", use_container_width=True)
+        clear_button = st.form_submit_button("♻️ Clear All", use_container_width=True)
     with col2:
-        delete_previous = st.form_submit_button("🗑️ Delete", use_container_width=True)
+        delete_previous = st.form_submit_button("🗑️ Delete Previous", use_container_width=True)
 
         
 
