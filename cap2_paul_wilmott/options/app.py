@@ -50,10 +50,26 @@ with st.sidebar.form("params_form"):
         value=0.0
     )
 
-    add_option = st.form_submit_button("Add Option")
-    delete_previous = st.form_submit_button("Delete Previous Option")
-    clear_button = st.form_submit_button("Clear All")
-    submit = st.form_submit_button("Calculate")
+    # Cria três colunas para os botões
+    col1, col2= st.columns(2)
+
+    with col1:
+        add_option = st.form_submit_button("➕ Add", use_container_width=True, type="secondary")
+    with col2:
+        submit = st.form_submit_button("📊 Calculate", use_container_width=True, type="primary")
+    
+    col1, col2 = st.columns(2)
+    with col1:
+        clear_button = st.form_submit_button("♻️ Clear", use_container_width=True)
+    with col2:
+        delete_previous = st.form_submit_button("🗑️ Delete", use_container_width=True)
+
+        
+
+    #add_option = st.form_submit_button("Add Option")
+    #delete_previous = st.form_submit_button("Delete Previous Option")
+    #clear_button = st.form_submit_button("Clear All")
+    #submit = st.form_submit_button("Calculate")
 
 # --- Handle Button Actions ---
 if add_option:
