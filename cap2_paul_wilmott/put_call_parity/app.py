@@ -1,104 +1,116 @@
+APP_INFO = {
+    "title": "⚖️ Put-Call Parity Visualizer",
+    "description": "Explora a relação entre calls, puts, e o preço da ação subjacente."
+}
+
+
 import streamlit as st
 import numpy as np
 import plotly.graph_objects as go
-from options import call_option, put_option
+from ..put_call_parity.options import call_option, put_option
 
-st.set_page_config(page_title="Put-Call Parity", page_icon="📈")
-st.title("Exploring Put-Call Parity 📈")
 
-st.info("""
-**Instructions**
-- Enter Call, Put, and Stock parameters.
-- Click "Calculate" to check if Put-Call Parity holds.
-- View payoff diagrams and equation breakdown.
-""")
+def run():
+    st.set_page_config(page_title="Put-Call Parity", page_icon="📈")
+    st.title("Exploring Put-Call Parity 📈")
 
-with st.sidebar.form("params_form"):
-    st.header("Parameters")
+    st.info("""
+    **Instructions**
+    - Enter Call, Put, and Stock parameters.
+    - Click "Calculate" to check if Put-Call Parity holds.
+    - View payoff diagrams and equation breakdown.
+    """)
 
-    call_price = st.number_input("Call Price € - C", step=0.1, format="%.2f", value=2.0)
-    put_price = st.number_input("Put Price € - P", step=0.1, format="%.2f", value=1.0)
-    s0 = st.number_input("Initial Stock Price € - S(0)", step=1.0, format="%.2f", value=100.0)
-    strike_price = st.number_input("Strike Price € - E", step=1.0, format="%.2f", value=100.0)
-    r = st.slider("Annual interest rate (%)", 0.0, 10.0, 2.0, 0.1) / 100
-    time = st.slider("Expiration (years)", 0, 10, 1, 1)
+    with st.sidebar.form("params_form"):
+        st.header("Parameters")
 
-    submit = st.form_submit_button("📊 Calculate", use_container_width=True, type="primary")
+        call_price = st.number_input("Call Price € - C", step=0.1, format="%.2f", value=2.0)
+        put_price = st.number_input("Put Price € - P", step=0.1, format="%.2f", value=1.0)
+        s0 = st.number_input("Initial Stock Price € - S(0)", step=1.0, format="%.2f", value=100.0)
+        strike_price = st.number_input("Strike Price € - E", step=1.0, format="%.2f", value=100.0)
+        r = st.slider("Annual interest rate (%)", 0.0, 10.0, 2.0, 0.1) / 100
+        time = st.slider("Expiration (years)", 0, 10, 1, 1)
 
-if submit:
-    # --- Compute both sides ---
-    lhs = call_price - put_price
-    rhs = s0 - strike_price * np.exp(-r * time)
-    parity_diff = lhs - rhs
+        submit = st.form_submit_button("📊 Calculate", use_container_width=True, type="primary")
 
-    # --- Display results ---
-    st.subheader("🔢 Put-Call Parity Calculation")
+    if submit:
+        # --- Compute both sides ---
+        lhs = call_price - put_price
+        rhs = s0 - strike_price * np.exp(-r * time)
+        parity_diff = lhs - rhs
 
-    col1, col2, col3 = st.columns(3)
-    with col1:
-        st.metric("Left Side (C - P)", f"{lhs:.2f} €")
-    with col2:
-        st.metric("Right Side (S₀ - E·e⁻ʳᵀ)", f"{rhs:.2f} €")
-    with col3:
-        st.metric("Difference", f"{parity_diff:.2f} €")
+        # --- Display results ---
+        st.subheader("🔢 Put-Call Parity Calculation")
 
-    # --- Verdict ---
-    if np.isclose(parity_diff, 0, atol=1e-2):
-        st.success("✅ Put-Call Parity holds — no arbitrage opportunity.")
-    elif parity_diff > 0:
-        st.warning("⚠️ Arbitrage possible: Call may be overpriced or Put underpriced.")
-    else:
-        st.warning("⚠️ Arbitrage possible: Call may be underpriced or Put overpriced.")
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            st.metric("Left Side (C - P)", f"{lhs:.2f} €")
+        with col2:
+            st.metric("Right Side (S₀ - E·e⁻ʳᵀ)", f"{rhs:.2f} €")
+        with col3:
+            st.metric("Difference", f"{parity_diff:.2f} €")
 
-    # --- Equation shown dynamically ---
-    st.markdown(
-        f"""
-        ### Equation Breakdown
-        $$
-        C - P = S_0 - E e^{{-rT}} \\\\
-        {call_price:.2f} - {put_price:.2f} = {s0:.2f} - {strike_price:.2f} e^{{-{r:.3f} \\times {time:.2f}}}
-        $$
-        """
-    )
+        # --- Verdict ---
+        if np.isclose(parity_diff, 0, atol=1e-2):
+            st.success("✅ Put-Call Parity holds — no arbitrage opportunity.")
+        elif parity_diff > 0:
+            st.warning("⚠️ Arbitrage possible: Call may be overpriced or Put underpriced.")
+        else:
+            st.warning("⚠️ Arbitrage possible: Call may be underpriced or Put overpriced.")
 
-    st.divider()
-    st.subheader("💰 Payoff Diagram")
+        # --- Equation shown dynamically ---
+        st.markdown(
+            f"""
+            ### Equation Breakdown
+            $$
+            C - P = S_0 - E e^{{-rT}} \\\\
+            {call_price:.2f} - {put_price:.2f} = {s0:.2f} - {strike_price:.2f} e^{{-{r:.3f} \\times {time:.2f}}}
+            $$
+            """
+        )
 
-    # --- Payoff visualization ---
-    stock_prices = np.linspace(0, 2 * strike_price, 200)
+        st.divider()
+        st.subheader("💰 Payoff Diagram")
 
-    payoff_long_call_short_put = np.array([
-        call_option(strike_price, s, True) + put_option(strike_price, s, False)
-        for s in stock_prices
-    ])
-    payoff_short_call_long_put = np.array([
-        call_option(strike_price, s, False) + put_option(strike_price, s, True)
-        for s in stock_prices
-    ])
+        # --- Payoff visualization ---
+        stock_prices = np.linspace(0, 2 * strike_price, 200)
 
-    fig = go.Figure()
-    fig.add_trace(go.Scatter(
-        x=stock_prices,
-        y=payoff_long_call_short_put,
-        mode="lines",
-        name="Long Call + Short Put",
-        line=dict(width=3)
-    ))
-    fig.add_trace(go.Scatter(
-        x=stock_prices,
-        y=payoff_short_call_long_put,
-        mode="lines",
-        name="Short Call + Long Put",
-        line=dict(width=3)
-    ))
-    fig.add_hline(y=0, line=dict(color="gray", dash="dash"))
+        payoff_long_call_short_put = np.array([
+            call_option(strike_price, s, True) + put_option(strike_price, s, False)
+            for s in stock_prices
+        ])
+        payoff_short_call_long_put = np.array([
+            call_option(strike_price, s, False) + put_option(strike_price, s, True)
+            for s in stock_prices
+        ])
 
-    fig.update_layout(
-        title="Profit / Loss at Expiration",
-        xaxis_title="Stock Price at Expiration (€)",
-        yaxis_title="Profit / Loss (€)",
-        legend_title="Positions",
-        margin=dict(l=0, r=0, t=40, b=0),
-    )
+        fig = go.Figure()
+        fig.add_trace(go.Scatter(
+            x=stock_prices,
+            y=payoff_long_call_short_put,
+            mode="lines",
+            name="Long Call + Short Put",
+            line=dict(width=3)
+        ))
+        fig.add_trace(go.Scatter(
+            x=stock_prices,
+            y=payoff_short_call_long_put,
+            mode="lines",
+            name="Short Call + Long Put",
+            line=dict(width=3)
+        ))
+        fig.add_hline(y=0, line=dict(color="gray", dash="dash"))
 
-    st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": False})
+        fig.update_layout(
+            title="Profit / Loss at Expiration",
+            xaxis_title="Stock Price at Expiration (€)",
+            yaxis_title="Profit / Loss (€)",
+            legend_title="Positions",
+            margin=dict(l=0, r=0, t=40, b=0),
+        )
+
+        st.plotly_chart(fig, use_container_width=True, config={"displayModeBar": False})
+
+
+if __name__=="__main__":
+    run()
