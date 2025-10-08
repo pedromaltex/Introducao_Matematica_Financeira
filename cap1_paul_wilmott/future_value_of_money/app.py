@@ -1,6 +1,7 @@
 APP_INFO = {
-    "title": "Future Value of Money 💲",
-    "description": "Explora a relação entre calls, puts, e o preço da ação subjacente."
+    "title": "💵 Future Value of Money",
+    "description": "See how time affects the value of money. "
+    "Calculate how today’s cash grows (or shrinks) under different rates and time horizons."
 }
 
 
@@ -14,7 +15,7 @@ from ..future_value_of_money.compound_interest import decreasing_continuously_co
 def run():
 
     # --- Interface Streamlit ---
-    st.title("How much is 1💲 worth in the future?")
+    st.title(APP_INFO["title"])
 
     # Inputs
     with st.sidebar.form("params_form"):

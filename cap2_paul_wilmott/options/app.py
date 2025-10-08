@@ -1,6 +1,7 @@
 APP_INFO = {
-    "title": "⚖️ Put-Call Parity Visualizer",
-    "description": "Explora a relação entre calls, puts, e o preço da ação subjacente."
+    "title": "🧠 Exploring Options",
+    "description": "Dive deeper into how calls and puts respond to market moves. "
+    "Compare multiple positions, analyze combined payoffs, and build intuition about risk and reward."
 }
 
 import streamlit as st
@@ -11,7 +12,7 @@ from ..options.options import call_option, put_option
 def run():
     # --- Page Configuration ---
     st.set_page_config(page_title="Options", page_icon="📈")
-    st.title("Exploring Options 📈")
+    st.title(APP_INFO["title"])
 
     st.info(
         """

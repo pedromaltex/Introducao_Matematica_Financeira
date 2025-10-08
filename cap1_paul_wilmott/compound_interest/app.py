@@ -1,6 +1,7 @@
 APP_INFO = {
-    "title": "Compound Interest Calculator 💲",
-    "description": "Explora a relação entre calls, puts, e o preço da ação subjacente."
+    "title": "💰 Compound Interest Calculator",
+    "description": "Discover how your money grows with compound interest. "
+    "Experiment with rates, periods, and contributions to see exponential growth in action."
 }
 
 import streamlit as st
@@ -11,7 +12,7 @@ from ..compound_interest.compound_interest import compounded_f_value, compounded
 
 def run():
     # --- Interface Streamlit ---
-    st.title("Compound Interest Calculator 💲")
+    st.title(APP_INFO["title"])
 
 
     # Inputs

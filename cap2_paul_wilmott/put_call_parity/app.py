@@ -1,6 +1,7 @@
 APP_INFO = {
-    "title": "⚖️ Put-Call Parity Visualizer",
-    "description": "Explora a relação entre calls, puts, e o preço da ação subjacente."
+    "title": "⚖️ Exploring Put-Call Parity",
+    "description": "Discover the elegant relationship between calls, puts, and forwards. "
+    "Test the Put-Call Parity equation with live calculations and visual payoff comparisons."
 }
 
 
@@ -12,7 +13,7 @@ from ..put_call_parity.options import call_option, put_option
 
 def run():
     st.set_page_config(page_title="Put-Call Parity", page_icon="📈")
-    st.title("Exploring Put-Call Parity 📈")
+    st.title(APP_INFO["title"])
 
     st.info("""
     **Instructions**

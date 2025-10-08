@@ -1,6 +1,7 @@
 APP_INFO = {
-    "title": "Forwards📈",
-    "description": "Explora a relação entre calls, puts, e o preço da ação subjacente."
+    "title": "📈 Forward Contract Explorer",
+    "description": "Understand how forward contracts lock in future prices. "
+    "Simulate gains and losses as market prices change — perfect for grasping hedging basics."
 }
 
 
@@ -12,7 +13,7 @@ from ..forwards.forward_aux import no_arbitrage_forward
 def run():
     # --- Interface Streamlit ---
     st.set_page_config(page_title="Forward Pricing", page_icon="📈")
-    st.title("Forwards📈")
+    st.title(APP_INFO["title"])
     st.markdown("### Arbitrage or No Arbitrage?")
 
 

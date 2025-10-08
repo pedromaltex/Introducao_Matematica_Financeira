@@ -1,6 +1,7 @@
 APP_INFO = {
-    "title": "Random Walk Simulator 🎲",
-    "description": "Explora a relação entre calls, puts, e o preço da ação subjacente."
+    "title": "🎲 Random Walk Simulator",
+    "description": "Explore how stock prices might evolve over time with random paths. "
+    "Visualize volatility, uncertainty, and how randomness shapes market behavior."
 }
 
 import streamlit as st
@@ -12,7 +13,7 @@ from ..coin_toss.coin_toss import coin, geometric_random_walk, arithmetric_rando
 
 def run():
     # --- Interface Streamlit ---
-    st.title("Random Walk Simulator 🎲")
+    st.title(APP_INFO["title"])
 
     # Inputs
     st.sidebar.header("Simulation Parameters")

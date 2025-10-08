@@ -1,4 +1,4 @@
 CHAPTER_INFO = {
-    "title": "Capítulo 1 - Paul Wilmott Introduces Quantitative Finance",
+    "title": "🧮 Chapter 1 – Foundations of Financial Mathematics",
     "description": "Explora os fundamentos de opções europeias e a paridade put-call.",
 }
