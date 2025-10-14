@@ -8,7 +8,11 @@ APP_INFO = {
 import streamlit as st
 import numpy as np
 import plotly.graph_objects as go
-from ..forwards.forward_aux import no_arbitrage_forward
+
+if __name__=="__main__":
+    from forward_aux import no_arbitrage_forward
+else:
+    from ..forwards.forward_aux import no_arbitrage_forward
 
 def run():
     # --- Interface Streamlit ---
