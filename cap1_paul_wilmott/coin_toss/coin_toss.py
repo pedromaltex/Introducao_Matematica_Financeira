@@ -47,7 +47,7 @@ def geometric_random_walk(initial_value=100, up_prob=0.5, steps=1000):
             y[i] = y[i-1] * 1.01
         else:
             y[i] = y[i-1] * 0.99
-    return y
+    return np.array(y)
 
 def arithmetric_random_walk(initial_value=100, up_prob=0.5, steps=1000):
     """
@@ -72,7 +72,7 @@ def arithmetric_random_walk(initial_value=100, up_prob=0.5, steps=1000):
             y[i] = y[i-1] + 1
         else:
             y[i] = y[i-1] - 1
-    return y
+    return np.array(y)
 # %%
 if __name__ == "__main__":
     for i in range(10):

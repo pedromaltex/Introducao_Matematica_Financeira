@@ -9,7 +9,10 @@ import numpy as np
 import plotly.graph_objects as go
 import random as rd
 
-from compound_interest import compounded_f_value, compounded_periodic_fvalue
+if __name__=="__main__":
+    from compound_interest import compounded_f_value, compounded_periodic_fvalue
+else:
+    from ..compound_interest.compound_interest import compounded_f_value, compounded_periodic_fvalue
 
 
 def run():
