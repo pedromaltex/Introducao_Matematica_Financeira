@@ -8,7 +8,11 @@ import streamlit as st
 import numpy as np
 import plotly.graph_objects as go
 import random as rd
-from ..coin_toss.coin_toss import coin, geometric_random_walk, arithmetric_random_walk
+
+if __name__=="__main__":
+    from coin_toss import coin, geometric_random_walk, arithmetric_random_walk
+else:
+    from ..coin_toss.coin_toss import coin, geometric_random_walk, arithmetric_random_walk
 
 
 def run():
