@@ -8,7 +8,11 @@ APP_INFO = {
 import streamlit as st
 import numpy as np
 import plotly.graph_objects as go
-from ..put_call_parity.options import call_option, put_option
+
+if __name__=="__main__":
+    from options import call_option, put_option
+else:
+    from ..put_call_parity.options import call_option, put_option
 
 
 def run():
