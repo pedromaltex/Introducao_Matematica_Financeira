@@ -9,7 +9,11 @@ import streamlit as st
 import numpy as np
 import plotly.graph_objects as go
 import random as rd
-from ..future_value_of_money.compound_interest import decreasing_continuously_compounded
+
+if __name__=="__main__":
+    from compound_interest import decreasing_continuously_compounded
+else:
+    from ..future_value_of_money.compound_interest import decreasing_continuously_compounded
 
 
 def run():
